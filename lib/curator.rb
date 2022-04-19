@@ -19,4 +19,8 @@ class Curator
       artist.id
     end
   end
+
+  # * `photographs_by_artist` - This method will return a hash with artists as keys, and an array of their photographs as values.
+  # * `artists_with_multiple_photographs` - This method returns an Array of names of artists who have more than one photograph
+  # * `photographs_taken_by_artists_from(string)` - This method takes a String representing a country. It returns an Array of `Photograph`s that were taken by a photographer from that country.
 end
