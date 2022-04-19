@@ -11,7 +11,6 @@ describe Photograph do
 
   let(:photograph) { Photograph.new(attributes) }
 
-
   it "exists" do
     expect(photograph).to be_a Photograph
   end

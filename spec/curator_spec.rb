@@ -93,7 +93,7 @@ describe Curator do
     expect(curator.find_artist_by_id("1")).to eq(artist_1)
   end
 
-  it "can return a hash of photographs bu artist" do
+  it "can return a hash of photographs by artist" do
     curator.add_artist(artist_1)
     curator.add_artist(artist_2)
     curator.add_artist(artist_3)
@@ -103,12 +103,37 @@ describe Curator do
     curator.add_photograph(photo_4)
 
     expected = {
-      artist_1 => photo_1,
-      artist_2 => photo_2,
-      artist_3 => photo_3,
-      artist_3 => photo_4,
+      artist_1 => [photo_1],
+      artist_2 => [photo_2],
+      artist_3 => [photo_3, photo_4]
     }
 
     expect(curator.photographs_by_artist).to eq(expected)
   end
+
+  it "returns artists with multiple photographs" do
+    curator.add_artist(artist_1)
+    curator.add_artist(artist_2)
+    curator.add_artist(artist_3)
+    curator.add_photograph(photo_1)
+    curator.add_photograph(photo_2)
+    curator.add_photograph(photo_3)
+    curator.add_photograph(photo_4)
+
+    expect(curator.artists_with_multiple_photographs).to eq ["Diane Arbus"]
+  end
+
+  it "returns photographs taken by artist from US" do
+    curator.add_artist(artist_1)
+    curator.add_artist(artist_2)
+    curator.add_artist(artist_3)
+    curator.add_photograph(photo_1)
+    curator.add_photograph(photo_2)
+    curator.add_photograph(photo_3)
+    curator.add_photograph(photo_4)
+
+    expect(curator.photographs_taken_by_artist_from("United States")).to eq []
+  end
+
+
 end
