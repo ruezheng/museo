@@ -12,19 +12,16 @@ describe Artist do
 
   let(:artist) { Artist.new(attributes) }
 
-  it "exists" do
-    expect(artist).to be_a Artist
-  end
-
-  it "has attributes" do
-    expect(artist.id).to eq('2')
+  it "exists and has attributes" do
+    expect(artist).to be_a(Artist)
+    expect(artist.id).to eq("2")
     expect(artist.name).to eq("Ansel Adams")
     expect(artist.born).to eq("1902")
     expect(artist.died).to eq("1984")
     expect(artist.country).to eq("United States")
   end
 
-  it "returns age at death" do
+  it "#age_at_death" do
     expect(artist.age_at_death).to eq(82)
   end
 end
